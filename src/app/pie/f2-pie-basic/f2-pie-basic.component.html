@@ -1,0 +1,17 @@
+<p>
+  基础饼图
+</p>
+<f2-chart>
+  <f2-source [data]="data" [colDefs]="colDefs"></f2-source>
+  <f2-legend [config]="legendConfig"></f2-legend>
+  <f2-tooltip [disabled]="true"></f2-tooltip>
+  <f2-coord-polar [config]="{transposed: true,radius: 0.85}"></f2-coord-polar>
+  <f2-axis [disabled]="true"></f2-axis>
+  <f2-geometry [type]="'interval'"
+               [position]="'a*percent'"
+               [color]="['name',['#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0']]"
+               [adjust]="'stack'"
+               [style]="{lineWidth: 1,stroke: '#fff',lineJoin: 'round',lineCap: 'round'}"
+               [animate]="{appear: {duration: 1200,easing: 'bounceOut'}}"
+  ></f2-geometry>
+</f2-chart>

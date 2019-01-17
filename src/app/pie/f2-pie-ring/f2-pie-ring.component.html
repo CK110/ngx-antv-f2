@@ -1,0 +1,21 @@
+<p>
+  资产配置(环图)
+</p>
+
+<f2-chart [config]="{ padding: [20, 'auto']}">
+  <f2-source [data]="data" [colDefs]="colDefs"></f2-source>
+  <f2-tooltip [disabled]="true"></f2-tooltip>
+  <f2-legend [config]="legendConfig"></f2-legend>
+  <f2-coord-polar [config]="{
+    transposed: true,
+    innerRadius: 0.7,
+    radius: 0.85}">
+  </f2-coord-polar>
+  <f2-axis [disabled]="true"></f2-axis>
+  <f2-geometry type="interval"
+               [position]="'a*percent'"
+               [color]="['name',['#FE5D4D', '#3BA4FF', '#737DDE']]"
+               [adjust]="'stack'">
+  </f2-geometry>
+  <f2-guide type="html" [config]="guideConfig"></f2-guide>
+</f2-chart>

@@ -138,6 +138,46 @@
           }
         }
       }
+    },
+    "ngx-antv-f2": {
+      "root": "projects/ngx-antv-f2",
+      "sourceRoot": "projects/ngx-antv-f2/src",
+      "projectType": "library",
+      "prefix": "f2",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-antv-f2/tsconfig.lib.json",
+            "project": "projects/ngx-antv-f2/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-antv-f2/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-antv-f2/src/test.ts",
+            "tsConfig": "projects/ngx-antv-f2/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-antv-f2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-antv-f2/tsconfig.lib.json",
+              "projects/ngx-antv-f2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-antv-f2-app"

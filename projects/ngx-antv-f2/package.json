@@ -1,0 +1,9 @@
+{
+  "name": "ngx-antv-f2",
+  "version": "0.0.2",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "@antv/f2": "^3.3.4"
+  }
+}

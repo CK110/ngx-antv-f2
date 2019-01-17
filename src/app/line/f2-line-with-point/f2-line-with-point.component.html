@@ -1,0 +1,13 @@
+<p>
+  基础折线图（带点）
+</p>
+
+<f2-chart>
+  <f2-source [data]="data"
+             [colDefs]="{ value: {tickCount: 5,min: 0}, date: {range: [0, 1]} }"></f2-source>
+  <f2-tooltip
+    [config]="{showCrosshairs: true, showItemMarker: false, onShow: onShowFunc}"></f2-tooltip>
+  <f2-axis [option]="['day',{label: labelFunc }]"></f2-axis>
+  <f2-geometry [type]="'line'" [position]="'day*value'"></f2-geometry>
+  <f2-geometry [type]="'point'" [position]="'day*value'" [style]="{stroke: '#fff',lineWidth: 1}"></f2-geometry>
+</f2-chart>

@@ -1,0 +1,11 @@
+<p>
+  基础折线图
+</p>
+<f2-chart>
+  <f2-source [data]="data"
+             [colDefs]="{value: {tickCount: 5,min: 0},date: {type: 'timeCat',range: [0, 1],tickCount: 3}}"></f2-source>
+  <f2-tooltip
+    [config]="{ custom: true,showXTip: true,showYTip: true,snap: true,crosshairsType: 'xy',crosshairsStyle: {lineDash: [2]}}"></f2-tooltip>
+  <f2-axis [option]="['date',{label: labelFunc }]"></f2-axis>
+  <f2-geometry [type]="'line'" [position]="'date*value'"></f2-geometry>
+</f2-chart>

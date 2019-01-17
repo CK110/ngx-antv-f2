@@ -1,0 +1,21 @@
+<p>
+  饼图选中交互
+</p>
+
+<f2-chart>
+  <f2-source [data]="data" [colDefs]="colDefs"></f2-source>
+  <f2-legend [config]="{position: 'right',marker: 'square'}"></f2-legend>
+  <f2-tooltip [disabled]="true"></f2-tooltip>
+  <f2-coord-polar [config]="{transposed: true,radius: 0.85,innerRadius: 0.618}"></f2-coord-polar>
+  <f2-axis [disabled]="true"></f2-axis>
+  <f2-geometry type="interval"
+               [position]="'a*percent'"
+               [color]="['name',['#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0']]"
+               [adjust]="'stack'"
+               [style]="{lineWidth: 1,stroke: '#fff',lineJoin: 'round',lineCap: 'round'}">
+  </f2-geometry>
+  <f2-guide type="html" [config]="guideHtmlConfig"></f2-guide>
+  <f2-interaction [option]="interactionOption">
+
+  </f2-interaction>
+</f2-chart>

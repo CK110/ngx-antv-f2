@@ -15,6 +15,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-antv-f2": [
+        "dist/ngx-antv-f2"
+      ],
+      "ngx-antv-f2/*": [
+        "dist/ngx-antv-f2/*"
+      ]
+    }
   }
 }
