@@ -121,18 +121,23 @@ export class F2Chart implements AfterViewInit, OnDestroy {
   }
 
   render() {
-    const chart = new F2.Chart(Object.assign(this.config, {
+    const defaultConfig = {
       el: this.canvas.nativeElement,
       width: window.innerWidth,
       height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
       pixelRatio: window.devicePixelRatio
-    }));
+    };
 
     // 回传chart,自定义渲染
     if (this.preventRender === true) {
-      this.customRender.emit(chart);
+      this.customRender.emit({
+        defaultConfig: defaultConfig,
+        F2: F2
+      });
       return;
     }
+
+    const chart = new F2.Chart(Object.assign(this.config, defaultConfig));
 
     if (this.source && this.source.data) {
       this.source.setChartSource(chart);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-custom-render-pie-basic',
@@ -48,9 +48,12 @@ export class CustomRenderPieBasicComponent implements OnInit {
   ngOnInit() {
   }
 
-  customRender(chart: any) {
-    console.log(chart);
+  customRender({F2, defaultConfig}) {
+    console.log(F2);
+    console.log(defaultConfig);
 
+    const Chart = F2.Chart;
+    const chart = new Chart(defaultConfig);
     chart.source(this.data, {
       percent: {
         formatter: function formatter(val) {

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, InjectionToken, ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {F2Axis} from './f2-axis';
 import {F2Chart} from './f2-chart';
@@ -15,7 +15,6 @@ import {F2Animate} from './f2-animate';
 import {F2Interaction} from './f2-interaction';
 import {F2PieLabel} from './f2-pie-label';
 import {F2ScrollBar} from './f2-scroll-bar';
-
 import * as F2 from '@antv/f2/lib/core';
 import * as Geom from '@antv/f2/lib/geom/';
 import * as CoordPolar from '@antv/f2/lib/coord/polar';
@@ -24,8 +23,8 @@ import * as Adjust from '@antv/f2/lib/geom/adjust/';
 import * as ScaleTimeCat from '@antv/f2/lib/scale/time-cat';
 import * as Tooltip from '@antv/f2/lib/plugin/tooltip';
 import * as Legend from '@antv/f2/lib/plugin/legend';
-import * as Guide from '@antv/f2/lib/component/guide';
-import * as Guide2 from '@antv/f2/lib/plugin/guide';
+import * as GuideComponent from '@antv/f2/lib/component/guide';
+import * as GuidePlugin from '@antv/f2/lib/plugin/guide';
 import * as Animation from '@antv/f2/lib/animation/detail';
 import * as Interaction from '@antv/f2/lib/interaction/';
 import * as ScrollBar from '@antv/f2/lib/plugin/scroll-bar';
@@ -37,13 +36,40 @@ F2.Chart.plugins.register([
   Adjust, // adjust数据调整类型
   ScaleTimeCat, // scale度量类型-timeCat
   Animation, // 动画-精细的动画模块（包含入场、更新以及销毁动画）
-  Guide, // 辅助元素模块-guide 组件
-  Guide2, // 辅助元素模块-guide 插件
+  GuideComponent, // 辅助元素模块-guide 组件
+  GuidePlugin, // 辅助元素模块-guide 插件
   Tooltip, // 提示信息模块
   Legend, // 图例
   Interaction, // 交互行为引入
   ScrollBar // 用于辅助 pan 和 pin 两种交互行为，以显示当前图表的数据范围
 ]);
+
+// export interface F2Config {
+//   plugins?: any[]; // 默认插件,按需引用
+//   registerShape?: any; // 自定义 Shape
+//   registerAnimation?: any; // 自定义 Animate
+//   registerInteraction?: any; // 自定义 Interaction
+// }
+//
+// export const ConfigToken = new InjectionToken<any>('USER_CONFIG');
+//
+// export function appInitialize(config: F2Config) {
+//   return (): any => {
+//     console.log(config);
+//     if (config.plugins && config.plugins.length > 0) {
+//       F2.Chart.plugins.register(config.plugins);
+//     }
+//     if (config.registerShape && config.registerShape.length > 0) {
+//       config.registerShape.forEach((registerShape) => {
+//         if (typeof registerShape === 'function') {
+//           registerShape(F2);
+//         } else {
+//           throw new Error('registerShape need function');
+//         }
+//       });
+//     }
+//   };
+// }
 
 const F2Component = [
   F2Chart,
@@ -63,10 +89,33 @@ const F2Component = [
   F2ScrollBar,
 ];
 
+/**
+ * // @dynamic
+ */
 @NgModule({
   imports: [CommonModule],
   declarations: [...F2Component],
   exports: [...F2Component],
 })
 export class F2Module {
+
+  // static forRoot(config?: F2Config): ModuleWithProviders {
+  //   return {
+  //     ngModule: F2Module,
+  //     providers: [
+  //       {
+  //         provide: ConfigToken,
+  //         useValue: config
+  //       },
+  //       {
+  //         provide: APP_INITIALIZER,
+  //         useFactory: appInitialize,
+  //         multi: true,
+  //         deps: [
+  //           ConfigToken
+  //         ]
+  //       }
+  //     ]
+  //   };
+  // }
 }
