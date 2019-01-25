@@ -4,7 +4,7 @@
 
 <div *ngIf="isLoading">
   <div *ngFor="let line of list;let idx = index">
-    <f2-chart [config]="{padding: [0, 30, 60]}" [preventRender]="true" (customRender)="customRender($event,line)">
+    <f2-chart [config]="{padding: [0]}" [preventRender]="true" (customRender)="customRender($event,line)">
     </f2-chart>
   </div>
 </div>

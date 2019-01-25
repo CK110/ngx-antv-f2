@@ -24,9 +24,9 @@ declare var window: any;
 
 export interface ChartConfig {
 
-  // width?: number;
-  //
-  // height?: number;
+  width?: number;
+
+  height?: number;
 
   /**
    * 图表绘图区域和画布边框的间距，用于显示坐标轴文本、图例
@@ -62,9 +62,9 @@ export interface ChartConfig {
 @Component({
   selector: 'f2-chart',
   template: `
-    <canvas #canvas style="width: 100%; height: 100%"></canvas>
+    <canvas #canvas></canvas>
     <ng-content></ng-content>
-  `
+  `,
 })
 export class F2Chart implements AfterViewInit, OnDestroy {
 
@@ -119,12 +119,12 @@ export class F2Chart implements AfterViewInit, OnDestroy {
   }
 
   render() {
-    this.chart = new F2.Chart(Object.assign(this.config, {
+    this.chart = new F2.Chart(Object.assign({
       el: this.canvas.nativeElement,
-      // width: window.innerWidth,
-      // height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
+      width: window.innerWidth,
+      height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
       pixelRatio: window.devicePixelRatio
-    }));
+    }, this.config));
 
     // 回传chart,自定义渲染
     if (this.preventRender === true) {

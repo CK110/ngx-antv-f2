@@ -8,7 +8,7 @@
     "build-lib": "ng build ngx-antv-f2 --prod",
     "npm-pack": "cd dist/ngx-antv-f2 && npm pack",
     "package": "npm run build-lib && npm run npm-pack",
-    "publish": "npm publish ./dist/ngx-antv-f2/ngx-antv-f2-0.0.7.tgz",
+    "publish": "npm publish ./dist/ngx-antv-f2/ngx-antv-f2-0.0.9.tgz",
     "compodoc": "npx compodoc -p projects/ngx-antv-f2/tsconfig.lib.json -d dist/documentation"
   },
   "private": true,

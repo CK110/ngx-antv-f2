@@ -24,11 +24,12 @@ export class SimpleGaugeCustomComponent implements OnInit {
 
   customRender(chart: any, line: any) {
     console.log(line);
+
     this.registerShape();
 
     const data = [{
       const: 'a',
-      actual: 0,
+      actual: 40,
       expect: 100
     }];
 
@@ -67,7 +68,7 @@ export class SimpleGaugeCustomComponent implements OnInit {
             }
           }, animateCfg)).onUpdate((frame: number) => {
             // console.log(frame * 75);
-            document.getElementById('text').innerHTML = Math.round(frame * 75) + '%';
+            document.getElementById(`${line}-text`).innerHTML = Math.round(frame * 40) + '%';
           });
         }
       }
@@ -78,7 +79,7 @@ export class SimpleGaugeCustomComponent implements OnInit {
       position: ['50%', '50%'],
       html: `<div style="width:90px;white-space: normal;text-align: center;color: #595a5c;">
                   <p style="color:#999;font-weight: bold;font-size: 12px;margin: 0;">本月进度</p>
-                  <p id="text" style="font-size: 18px;margin: 4px 0 0 0;font-weight: bold;">0</p>
+                  <p id="${line}-text" style="font-size: 18px;margin: 4px 0 0 0;font-weight: bold;">0</p>
                  </div>`
     });
     chart.render();
