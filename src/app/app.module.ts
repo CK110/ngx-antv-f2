@@ -118,7 +118,7 @@ import {SimpleGaugeCustomComponent} from './gallery/simple-gauge-custom/simple-g
   ],
   imports: [
     BrowserModule,
-    F2Module,
+    F2Module
   ],
   providers: [],
   bootstrap: [AppComponent]

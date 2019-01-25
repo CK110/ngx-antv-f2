@@ -92,10 +92,9 @@ export class F2Geometry {
       geom.style(this.style);
     }
 
-    if (this.animate) {
+    if (this.animate !== undefined) {
       geom.animate(this.animate);
     }
-
   }
 
 }

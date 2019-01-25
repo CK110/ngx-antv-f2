@@ -24,9 +24,9 @@ declare var window: any;
 
 export interface ChartConfig {
 
-  width?: number;
-
-  height?: number;
+  // width?: number;
+  //
+  // height?: number;
 
   /**
    * 图表绘图区域和画布边框的间距，用于显示坐标轴文本、图例
@@ -62,10 +62,8 @@ export interface ChartConfig {
 @Component({
   selector: 'f2-chart',
   template: `
-    <div class="chart-wrapper">
-      <canvas #canvas></canvas>
-      <ng-content></ng-content>
-    </div>
+    <canvas #canvas style="width: 100%; height: 100%"></canvas>
+    <ng-content></ng-content>
   `
 })
 export class F2Chart implements AfterViewInit, OnDestroy {
@@ -121,89 +119,82 @@ export class F2Chart implements AfterViewInit, OnDestroy {
   }
 
   render() {
-    const defaultConfig = {
+    this.chart = new F2.Chart(Object.assign(this.config, {
       el: this.canvas.nativeElement,
-      width: window.innerWidth,
-      height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
+      // width: window.innerWidth,
+      // height: window.innerWidth > window.innerHeight ? (window.innerHeight - 54) : window.innerWidth * 0.707,
       pixelRatio: window.devicePixelRatio
-    };
+    }));
 
     // 回传chart,自定义渲染
     if (this.preventRender === true) {
-      this.customRender.emit({
-        defaultConfig: defaultConfig,
-        F2: F2
-      });
+      this.customRender.emit(this.chart);
       return;
     }
 
-    const chart = new F2.Chart(Object.assign(this.config, defaultConfig));
-
     if (this.source && this.source.data) {
-      this.source.setChartSource(chart);
+      this.source.setChartSource(this.chart);
     } else {
       return;
     }
 
     if (this.legend) {
-      this.legend.setChartLegend(chart);
+      this.legend.setChartLegend(this.chart);
     }
 
     // Coordinate
     if (this.coordRect) {
-      this.coordRect.setChartCoord(chart);
+      this.coordRect.setChartCoord(this.chart);
     }
     if (this.coordPolar) {
-      this.coordPolar.setChartCoord(chart);
+      this.coordPolar.setChartCoord(this.chart);
     }
 
     // axis
     if (this.axisList && this.axisList.length > 0) {
       this.axisList.forEach((axis) => {
-        axis.setChartAxis(chart);
+        axis.setChartAxis(this.chart);
       });
     }
 
     // tooltip
     if (this.tooltip) {
-      this.tooltip.setChartTooltip(chart);
+      this.tooltip.setChartTooltip(this.chart);
     }
 
     // geometry
     if (this.geometryList && this.geometryList.length > 0) {
       this.geometryList.forEach((geometry) => {
-        geometry.setChartGeometry(chart);
+        geometry.setChartGeometry(this.chart);
       });
     }
 
     // guide
     if (this.guide) {
-      this.guide.setChartGuide(chart);
+      this.guide.setChartGuide(this.chart);
     }
 
     // animate
     if (this.animate) {
-      this.animate.setChartAnimate(chart);
+      this.animate.setChartAnimate(this.chart);
     }
 
     // pieLabel
     if (this.pieLabel) {
-      this.pieLabel.setChartPieLabel(chart);
+      this.pieLabel.setChartPieLabel(this.chart);
     }
 
     // scrollBar
     if (this.scrollBar) {
-      this.scrollBar.setChartScrollBar(chart);
+      this.scrollBar.setChartScrollBar(this.chart);
     }
 
-    chart.render();
+    this.chart.render();
 
     // interaction
     if (this.interaction) {
-      this.interaction.setChartInteraction(chart);
+      this.interaction.setChartInteraction(this.chart);
     }
-
-    this.chart = chart;
   }
 
   repaint() {

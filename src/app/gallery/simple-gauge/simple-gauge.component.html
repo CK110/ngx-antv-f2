@@ -1,3 +1,25 @@
 <p>
   simple-gauge works!
 </p>
+
+<div style="height: 100px;width: 100px">
+  <f2-chart [config]="f2Config.chart.config">
+    <f2-source [data]="data" [colDefs]="f2Config.source.colDefs"></f2-source>
+    <f2-coord-polar [config]="f2Config.polar.config"></f2-coord-polar>
+    <f2-axis [disabled]="true"></f2-axis>
+    <f2-geometry type="interval"
+                 [position]="'name*expect'"
+                 [shape]="'polar-tick'"
+                 [size]="6"
+                 [color]="'#f2f4f7'"
+                 [animate]="false"></f2-geometry>
+    <f2-geometry type="interval"
+                 [position]="'name*actual'"
+                 [shape]="'polar-tick'"
+                 [size]="6"
+                 [color]="'rgb(33, 150, 243)'"
+                 [animate]="f2Config.geometry.animate()"></f2-geometry>
+    <f2-guide [type]="'html'" [config]="f2Config.guide.config()"></f2-guide>
+  </f2-chart>
+</div>
+

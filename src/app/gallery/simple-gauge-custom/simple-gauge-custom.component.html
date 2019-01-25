@@ -2,8 +2,13 @@
   半圆进度条-自定义
 </p>
 
-<f2-chart [preventRender]="true" (customRender)="customRender($event)">
+<div *ngIf="isLoading">
+  <div *ngFor="let line of list;let idx = index">
+    <f2-chart [config]="{padding: [0, 30, 60]}" [preventRender]="true" (customRender)="customRender($event,line)">
+    </f2-chart>
+  </div>
+</div>
 
-</f2-chart>
+
 
 

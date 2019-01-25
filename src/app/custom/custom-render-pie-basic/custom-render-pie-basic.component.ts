@@ -48,12 +48,7 @@ export class CustomRenderPieBasicComponent implements OnInit {
   ngOnInit() {
   }
 
-  customRender({F2, defaultConfig}) {
-    console.log(F2);
-    console.log(defaultConfig);
-
-    const Chart = F2.Chart;
-    const chart = new Chart(defaultConfig);
+  customRender(chart: any) {
     chart.source(this.data, {
       percent: {
         formatter: function formatter(val) {
