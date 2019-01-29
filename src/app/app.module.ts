@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {F2Module} from '../../projects/ngx-antv-f2/src/lib/basic/f2.module';
+import {F2Module} from 'ngx-antv-f2';
 import {F2PieBasicComponent} from './pie/f2-pie-basic/f2-pie-basic.component';
 import {F2PieRingComponent} from './pie/f2-pie-ring/f2-pie-ring.component';
 import {F2LineBasicComponent} from './line/f2-line-basic/f2-line-basic.component';

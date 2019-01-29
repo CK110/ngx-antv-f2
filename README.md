@@ -7,7 +7,7 @@
 
 ## Demo
 
-[Demo](https://parixpow.github.stackblitz.io/)
+[Demo](https://bnmixlqv.github.stackblitz.io)
 
 ## Installation
 
@@ -15,7 +15,7 @@
 npm i ngx-antv-f2 --save
 ```
 
-```
+```javascript
 import {F2Module} from 'ngx-antv-f2'
 
 @NgModule({
@@ -31,7 +31,7 @@ import {F2Module} from 'ngx-antv-f2'
 
 #### f2-pie-basic.component.html
 
-```
+```html
 <f2-chart>
   <f2-source [data]="data" [colDefs]="colDefs"></f2-source>
   <f2-legend [config]="legendConfig"></f2-legend>
@@ -50,7 +50,16 @@ import {F2Module} from 'ngx-antv-f2'
 
 #### f2-pie-basic.component.ts
 
-```
+```js
+import {Component, OnInit} from '@angular/core';
+
+@Component({
+  selector: 'app-f2-pie-basic',
+  templateUrl: './f2-pie-basic.component.html',
+  styleUrls: ['./f2-pie-basic.component.css']
+})
+export class F2PieBasicComponent implements OnInit {
+
   map = {
     '芳华': '40%',
     '妖猫传': '20%',
@@ -101,25 +110,26 @@ import {F2Module} from 'ngx-antv-f2'
     }
   };
 
+
   constructor() {
   }
 
   ngOnInit() {
   }
-
+}
 ```
 
 ### custom Render
 
 #### custom-render-pie-basic.component.html
 
-```
+```html
 <f2-chart [preventRender]="true" (customRender)="customRender($event)"></f2-chart>
 ```
 
 #### custom-render-pie-basic.component.ts
 
-```
+```js
 import {Component, OnInit} from '@angular/core';
 
 @Component({
