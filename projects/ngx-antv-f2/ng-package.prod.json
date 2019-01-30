@@ -3,5 +3,8 @@
   "dest": "../../dist/ngx-antv-f2",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "@antv/f2"
+  ]
 }

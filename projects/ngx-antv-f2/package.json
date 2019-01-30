@@ -1,6 +1,6 @@
 {
   "name": "ngx-antv-f2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Functional Antvis/F2 wrapper for Angular.",
   "keywords" :["Angular","Antv","F2"],
   "license" : "MIT",
@@ -8,9 +8,11 @@
     "type" : "git",
     "url" : "https://github.com/CK110/ngx-antv-f2"
   },
+  "dependencies": {
+    "@antv/f2": "^3.3.4"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0",
-    "@angular/core": "^6.0.0",
-    "@antv/f2": "^3.3.4"
+    "@angular/core": "^6.0.0"
   }
 }
