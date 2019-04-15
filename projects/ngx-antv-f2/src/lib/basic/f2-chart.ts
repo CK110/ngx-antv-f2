@@ -62,7 +62,9 @@ export interface ChartConfig {
 @Component({
   selector: 'f2-chart',
   template: `
-    <canvas #canvas></canvas>
+    <div>
+      <canvas #canvas></canvas>
+    </div>
     <ng-content></ng-content>
   `,
 })
